@@ -88,6 +88,7 @@ module Mongoid # :nodoc:
       embedded_in :parent, :class_name => self.name, :inverse_of => :children, :index => true, :validate => false
 
       field :parent_ids, :type => Array, :default => []
+      field :parent_id, :default => nil
       index :parent_ids
 
       set_callback :save, :after, :rearrange_children, :if => :rearrange_children?
